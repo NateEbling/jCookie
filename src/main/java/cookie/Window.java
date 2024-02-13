@@ -1,6 +1,6 @@
 package cookie;
 
-import cookie.util.Time;
+import util.Time;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 

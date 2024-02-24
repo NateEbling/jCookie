@@ -1,5 +1,6 @@
 package cookie;
 
+import components.SpriteRenderer;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 import renderer.Shader;
@@ -58,12 +59,19 @@ public class LevelEditorScene extends Scene {
     private Shader defaultShader;
     private Texture testTexture;
 
+    GameObject testObj;
+    private boolean firstTime = true;
+
     public LevelEditorScene() {
 
     }
 
     @Override
     public void init() {
+        this.testObj = new GameObject("test object");
+        this.testObj.addComponent(new SpriteRenderer());
+        this.addGameObjectToScene(this.testObj);
+
         this.camera = new Camera(new Vector2f());
 
         defaultShader = new Shader("assets/shaders/default.glsl");
@@ -136,5 +144,16 @@ public class LevelEditorScene extends Scene {
         glBindVertexArray(0);
 
         defaultShader.detach();
+
+        if (!firstTime) {
+            GameObject go = new GameObject("test object 2");
+            go.addComponent(new SpriteRenderer());
+            this.addGameObjectToScene(go);
+            firstTime = false;
+        }
+
+        for (GameObject go: this.gameObjects) {
+            go.update(dt);
+        }
     }
 }

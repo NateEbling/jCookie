@@ -41,10 +41,10 @@ public class LevelEditorScene extends Scene {
 
     private float[] vertexArray = {
              // position                //color                     // UV coords
-             100.5f, 0.5f,   0.0f,      1.0f, 0.0f, 0.0f, 1.0f,     1, 0, // Bottom right 0
-             0.5f,   100.5f, 0.0f,      0.0f, 1.0f, 0.0f, 1.0f,     0, 1,// Top left     1
-             100.5f, 100.5f, 0.0f,      1.0f, 0.0f, 1.0f, 1.0f,     1, 1,// Top right    2
-             0.5f,   0.5f,   0.0f,      1.0f, 1.0f, 0.0f, 1.0f,     0, 0,// Bottom left  3
+             100f, 0f,   0.0f,      1.0f, 0.0f, 0.0f, 1.0f,     1, 1, // Bottom right 0
+             0f,   100f, 0.0f,      0.0f, 1.0f, 0.0f, 1.0f,     0, 0,// Top left     1
+             100f, 100f, 0.0f,      1.0f, 0.0f, 1.0f, 1.0f,     1, 1,// Top right    2
+             0f,   0f,   0.0f,      1.0f, 1.0f, 0.0f, 1.0f,     0, 1,// Bottom left  3
     };
 
     // IMPORTANT: must be in counter-clockwise order
@@ -69,7 +69,7 @@ public class LevelEditorScene extends Scene {
         defaultShader = new Shader("assets/shaders/default.glsl");
         defaultShader.compile();
 
-        this.testTexture = new Texture("assets/images/testImage.png");
+        this.testTexture = new Texture("assets/images/default.png");
 
         // Generate VAO, VBO, and EDO buffer objects, and send to GPU
         vaoID = glGenVertexArrays();

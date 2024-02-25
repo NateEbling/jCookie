@@ -13,8 +13,6 @@ public abstract class Scene {
 
     }
 
-    public abstract void update(float dt);
-
     public void init() {
 
     }
@@ -33,5 +31,11 @@ public abstract class Scene {
             gameObjects.add(go);
             go.start();
         }
+    }
+
+    public abstract void update(float dt);
+
+    public Camera camera() {
+        return this.camera;
     }
 }

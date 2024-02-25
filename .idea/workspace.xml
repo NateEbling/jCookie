@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6d77c1b-6bf5-4780-ae09-b6711ef68cfa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/FontRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cookie/Component.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cookie/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cookie/Transform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/GameObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

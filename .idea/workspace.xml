@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6d77c1b-6bf5-4780-ae09-b6711ef68cfa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Sprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Spritesheet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/default.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/testImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/default.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Shader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/AssetPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/AssetPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -87,6 +87,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

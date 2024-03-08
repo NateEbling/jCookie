@@ -23,9 +23,14 @@ public class LevelEditorScene extends Scene {
 
         Spritesheet sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
-        obj1 = new GameObject("object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
+        obj1 = new GameObject("object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 1);
         obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
         this.addGameObjectToScene(obj1);
+
+        GameObject obj2 = new GameObject("object 2", new Transform(new Vector2f(150, 200), new Vector2f(128, 128)), -2);
+        obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("assets/images/lew.png"))));
+        this.addGameObjectToScene(obj2);
+
     }
 
     private void loadResources() {
@@ -35,12 +40,11 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("assets/spritesheets/tiles1.png",
                 new Spritesheet(AssetPool.getTexture("assets/spritesheets/tiles1.png"),
                         16, 16, 4, 0));
+
     }
 
     @Override
     public void update(float dt) {
-        // System.out.println("FPS: " + (1.0f / dt));
-        obj1.transform.position.x += 10 * dt;
 
         for (GameObject go: this.gameObjects) {
             go.update(dt);

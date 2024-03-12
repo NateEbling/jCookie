@@ -13,6 +13,7 @@ public class Window {
     private int width, height;
     private String title;
     private long glfwWindow;
+    private ImGuiLayer imguiLayer;
 
     private float r, g, b, a;
 
@@ -118,6 +119,8 @@ public class Window {
 
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        this.imguiLayer = new ImGuiLayer();
+        this.imguiLayer.initImGui(glfwWindow);
 
         Window.changeScene(0);
 
@@ -138,6 +141,8 @@ public class Window {
             if (dt >= 0) {
                 currentScene.update(dt);
             }
+
+            this.imguiLayer.update(dt);
 
             glfwSwapBuffers(glfwWindow);
 

@@ -1,21 +1,61 @@
 package cookie;
 
+//import editor.GameViewWindow;
+//import editor.MenuBar;
+//import editor.PropertiesWindow;
+//import editor.SceneHierarchyWindow;
 import imgui.*;
 import imgui.callback.ImStrConsumer;
 import imgui.callback.ImStrSupplier;
-import imgui.flag.ImGuiConfigFlags;
+import imgui.flag.*;
+import imgui.gl3.ImGuiImplGl3;
+import imgui.glfw.ImGuiImplGlfw;
+import imgui.type.ImBoolean;
+//import javafx.scene.text.Font;
+//import renderer.PickingTexture;
+//import scenes.Scene;
+
+import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
 
 import static org.lwjgl.glfw.GLFW.*;
-
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
+import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 
 public class ImGuiLayer {
 
     private long glfwWindow;
 
+    // LWJGL3 renderer (SHOULD be initialized)
+    private final ImGuiImplGl3 imGuiGl3 = new ImGuiImplGl3();
+    private final ImGuiImplGlfw imGuiGlfw = new ImGuiImplGlfw();
+
+//    private GameViewWindow gameViewWindow;
+//    private PropertiesWindow propertiesWindow;
+//    private MenuBar menuBar;
+//    private SceneHierarchyWindow sceneHeirarchyWindow;
+
+    public ImGuiLayer(long glfwWindow) {
+        this.glfwWindow = glfwWindow;
+//        this.gameViewWindow = new GameViewWindow();
+//        this.propertiesWindow = new PropertiesWindow(pickingTexture);
+//        this.menuBar = new MenuBar();
+//        this.sceneHeirarchyWindow = new SceneHierarchyWindow();
+    }
+
+//    public GameViewWindow getGameViewWindow() {
+//        return this.gameViewWindow;
+//    }
+
+    // Initialize Dear ImGui.
     public void initImGui() {
-        // Critical for ImGui to work
+        // IMPORTANT!!
+        // This line is critical for Dear ImGui to work.
         ImGui.createContext();
 
+        // ------------------------------------------------------------
         // Initialize ImGuiIO config
         final ImGuiIO io = ImGui.getIO();
 
@@ -43,6 +83,7 @@ public class ImGuiLayer {
                 KeyListener.keyCallback(w, key, scancode, action, mods);
             }
         });
+
         glfwSetCharCallback(glfwWindow, (w, c) -> {
             if (c != GLFW_KEY_DELETE) {
                 io.addInputCharacter(c);
@@ -70,15 +111,15 @@ public class ImGuiLayer {
 //            }
         });
 
-//        glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
-//            io.setMouseWheelH(io.getMouseWheelH() + (float) xOffset);
-//            io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
+        glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
+            io.setMouseWheelH(io.getMouseWheelH() + (float) xOffset);
+            io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
 //            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
 //                MouseListener.mouseScrollCallback(w, xOffset, yOffset);
 //            } else {
 //                MouseListener.clear();
 //            }
-//        });
+        });
 
         io.setSetClipboardTextFn(new ImStrConsumer() {
             @Override
@@ -99,5 +140,113 @@ public class ImGuiLayer {
             }
         });
 
+        // ------------------------------------------------------------
+        // Fonts configuration
+        // Read: https://raw.githubusercontent.com/ocornut/imgui/master/docs/FONTS.txt
+
+        if (new File("C:/Windows/Fonts/segoeui.ttf").isFile()) {
+            final ImFontAtlas fontAtlas = io.getFonts();
+            final ImFontConfig fontConfig = new ImFontConfig(); // Natively allocated object, should be explicitly destroyed
+
+            // Glyphs could be added per-font as well as per config used globally like here
+            fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
+
+            // Fonts merge example
+            fontConfig.setPixelSnapH(true);
+            fontAtlas.addFontFromFileTTF("C:/Windows/Fonts/segoeui.ttf", 32, fontConfig);
+            fontConfig.destroy(); // After all fonts were added we don't need this config more
+        } else if (new File("C:/Windows/Fonts/Cour.ttf").isFile()) {
+            // Fallback font
+
+            final ImFontAtlas fontAtlas = io.getFonts();
+            final ImFontConfig fontConfig = new ImFontConfig(); // Natively allocated object, should be explicitly destroyed
+
+            // Glyphs could be added per-font as well as per config used globally like here
+            fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
+
+            // Fonts merge example
+            fontConfig.setPixelSnapH(true);
+            fontAtlas.addFontFromFileTTF("C:/Windows/Fonts/Cour.ttf", 32, fontConfig);
+            fontConfig.destroy(); // After all fonts were added we don't need this config more
+        }
+
+
+        // Method initializes LWJGL3 renderer.
+        // This method SHOULD be called after you've initialized your ImGui configuration (fonts and so on).
+        // ImGui context should be created as well.
+        imGuiGlfw.init(glfwWindow, false);
+        imGuiGl3.init("#version 330 core");
     }
+
+    public void update(float dt, Scene currentScene) {
+        startFrame(dt);
+
+        // Any Dear ImGui code SHOULD go between ImGui.newFrame()/ImGui.render() methods
+        setupDockspace();
+//        currentScene.imgui();
+//        //ImGui.showDemoWindow();
+//        gameViewWindow.imgui();
+//        propertiesWindow.imgui();
+//        sceneHeirarchyWindow.imgui();
+
+        endFrame();
+    }
+
+    private void startFrame(final float deltaTime) {
+        imGuiGlfw.newFrame();
+        ImGui.newFrame();
+    }
+
+    private void endFrame() {
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, Window.getWidth(), Window.getHeight());
+        glClearColor(0, 0, 0, 1);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // After Dear ImGui prepared a draw data, we use it in the LWJGL3 renderer.
+        // At that moment ImGui will be rendered to the current OpenGL context.
+        ImGui.render();
+        imGuiGl3.renderDrawData(ImGui.getDrawData());
+
+        long backupWindowPtr = glfwGetCurrentContext();
+        ImGui.updatePlatformWindows();
+        ImGui.renderPlatformWindowsDefault();
+        glfwMakeContextCurrent(backupWindowPtr);
+    }
+
+    // If you want to clean a room after yourself - do it by yourself
+    private void destroyImGui() {
+        imGuiGl3.dispose();
+        ImGui.destroyContext();
+    }
+
+    private void setupDockspace() {
+        int windowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking;
+
+        ImGuiViewport mainViewport = ImGui.getMainViewport();
+        ImGui.setNextWindowPos(mainViewport.getWorkPosX(), mainViewport.getWorkPosY());
+        ImGui.setNextWindowSize(mainViewport.getWorkSizeX(), mainViewport.getWorkSizeY());
+        ImGui.setNextWindowViewport(mainViewport.getID());
+        ImGui.setNextWindowPos(0.0f, 0.0f);
+        ImGui.setNextWindowSize(Window.getWidth(), Window.getHeight());
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+        windowFlags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse |
+                ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove |
+                ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+
+        ImGui.begin("Dockspace Demo", new ImBoolean(true), windowFlags);
+        ImGui.popStyleVar(2);
+
+        // Dockspace
+        ImGui.dockSpace(ImGui.getID("Dockspace"));
+
+        // menuBar.imgui();
+
+        ImGui.end();
+    }
+
+//    public PropertiesWindow getPropertiesWindow() {
+//        return this.propertiesWindow;
+//    }
 }

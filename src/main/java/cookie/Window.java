@@ -146,4 +146,12 @@ public class Window {
             beginTime = endTime;
         }
     }
+
+    public static int getWidth() {
+        return get().width;
+    }
+
+    public static int getHeight() {
+        return get().height;
+    }
 }

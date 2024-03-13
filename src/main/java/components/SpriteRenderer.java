@@ -14,7 +14,7 @@ public class SpriteRenderer extends Component {
 
     private transient Transform lastTransform;
 
-    private transient boolean isDirty = false;
+    private transient boolean isDirty = true;
 
 //    public SpriteRenderer(Vector4f color) {
 //        this.color = color;
@@ -70,8 +70,8 @@ public class SpriteRenderer extends Component {
 
     public void setColor(Vector4f color) {
         if (!this.color.equals(color)) {
-            this.color.set(color);
             this.isDirty = true;
+            this.color.set(color);
         }
 
     }

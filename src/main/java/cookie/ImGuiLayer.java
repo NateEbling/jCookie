@@ -29,7 +29,7 @@ public class ImGuiLayer {
         fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
 
         fontConfig.setPixelSnapH(true);
-        fontAtlas.addFontFromFileTTF("assets/fonts/8bitOperator.ttf", 20, fontConfig);
+        fontAtlas.addFontFromFileTTF("assets/fonts/8bitOperator.ttf", 14, fontConfig);
 
         fontConfig.destroy(); // Not needed after all the fonts are added
 

@@ -42,11 +42,11 @@ public class ImGuiLayer {
         imGuiGl3.init("#version 330 core");
     }
 
-    public void update(float dt) {
+    public void update(float dt, Scene currentScene) {
         imGuiGlfw.newFrame();
         ImGui.newFrame();
 
-        //currentScene.sceneImgui();
+        currentScene.sceneImgui();
 
         ImGui.showDemoWindow();
 

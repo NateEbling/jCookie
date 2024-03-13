@@ -1,5 +1,6 @@
 package cookie;
 
+import components.Rigidbody;
 import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
@@ -23,7 +24,12 @@ public class LevelEditorScene extends Scene {
 
         loadResources();
 
-        this.camera = new Camera(new Vector2f());
+        this.camera = new Camera(new Vector2f(-250, 0));
+
+        if (levelLoaded) {
+            this.activeGameObject = gameObjects.get(0);
+            return;
+        }
 
         Spritesheet sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
@@ -31,13 +37,10 @@ public class LevelEditorScene extends Scene {
         SpriteRenderer obj1Sprite = new SpriteRenderer();
         obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
         obj1.addComponent(obj1Sprite);
+        obj1.addComponent(new Rigidbody());
         this.addGameObjectToScene(obj1);
         this.activeGameObject = obj1;
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String serialized = gson.toJson(1);
-        int one = gson.fromJson(serialized, int.class);
 
     }
 
@@ -64,8 +67,6 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void imgui() {
-        ImGui.begin("Test window");
-        ImGui.text("Some random text");
-        ImGui.end();
+        
     }
 }

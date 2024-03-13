@@ -3,8 +3,12 @@ package cookie;
 import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
+import imgui.ImGui;
 import org.joml.Vector2f;
+import org.joml.Vector4f;
 import util.AssetPool;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class LevelEditorScene extends Scene {
 
@@ -24,12 +28,16 @@ public class LevelEditorScene extends Scene {
         Spritesheet sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
         obj1 = new GameObject("object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 1);
-        obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
+        SpriteRenderer obj1Sprite = new SpriteRenderer();
+        obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
+        obj1.addComponent(obj1Sprite);
         this.addGameObjectToScene(obj1);
+        this.activeGameObject = obj1;
 
-        GameObject obj2 = new GameObject("object 2", new Transform(new Vector2f(150, 200), new Vector2f(128, 128)), 1);
-        obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("assets/images/lew.png"))));
-        this.addGameObjectToScene(obj2);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String serialized = gson.toJson(1);
+        int one = gson.fromJson(serialized, int.class);
 
     }
 
@@ -52,5 +60,12 @@ public class LevelEditorScene extends Scene {
 
         this.renderer.render();
 
+    }
+
+    @Override
+    public void imgui() {
+        ImGui.begin("Test window");
+        ImGui.text("Some random text");
+        ImGui.end();
     }
 }

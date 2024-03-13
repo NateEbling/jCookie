@@ -25,6 +25,10 @@ public class LevelEditorScene extends Scene {
 
         this.camera = new Camera(new Vector2f());
 
+        if (levelLoaded) {
+            return;
+        }
+
         Spritesheet sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
         obj1 = new GameObject("object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 1);
@@ -34,10 +38,6 @@ public class LevelEditorScene extends Scene {
         this.addGameObjectToScene(obj1);
         this.activeGameObject = obj1;
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String serialized = gson.toJson(1);
-        int one = gson.fromJson(serialized, int.class);
 
     }
 

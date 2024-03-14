@@ -67,7 +67,7 @@ public abstract class Scene {
 
     }
 
-    public void saveExit() {
+     public void saveExit() {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())

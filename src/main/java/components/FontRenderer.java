@@ -1,7 +1,5 @@
 package components;
 
-import cookie.Component;
-
 public class FontRenderer extends Component {
 
     @Override

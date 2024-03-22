@@ -1,7 +1,12 @@
-package cookie;
+package scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import components.Component;
+import components.ComponentDeserializer;
+import cookie.Camera;
+import cookie.GameObject;
+import cookie.GameObjectDeserializer;
 import imgui.ImGui;
 import renderer.Renderer;
 

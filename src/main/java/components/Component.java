@@ -1,5 +1,6 @@
-package cookie;
+package components;
 
+import cookie.GameObject;
 import imgui.ImGui;
 import org.joml.Vector3f;
 import org.joml.Vector4f;

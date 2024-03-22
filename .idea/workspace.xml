@@ -5,15 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28cf1b7-9d9b-4596-93be-c50a3a5a17a3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cookie/Prefabs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Spritesheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/FontRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/FontRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Rigidbody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Rigidbody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/ComponentDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ComponentDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/GameObjectDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/GameObjectDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/ImGuiLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/LevelEditorScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/LevelScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cookie/MouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/MouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cookie/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cookie/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +70,12 @@
     "Notification.DoNotAsk-WindowsDefender": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RunManager">
@@ -86,16 +98,5 @@
       <updated>1710359776002</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cookie/ImGuiLayer.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

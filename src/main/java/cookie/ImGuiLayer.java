@@ -8,9 +8,9 @@ import imgui.flag.ImGuiFreeTypeBuilderFlags;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.internal.ImGui;
+import scenes.Scene;
 
-import static org.lwjgl.glfw.GLFW.glfwGetCurrentContext;
-import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
+import static org.lwjgl.glfw.GLFW.*;
 
 public class ImGuiLayer {
     public ImGuiImplGlfw imGuiGlfw;
@@ -20,7 +20,7 @@ public class ImGuiLayer {
         imGuiGlfw = new ImGuiImplGlfw();
         imGuiGl3 = new ImGuiImplGl3();
         imgui.internal.ImGui.createContext();
-        ImGuiIO io = imgui.internal.ImGui.getIO();
+        ImGuiIO io = ImGui.getIO();
 
         io.setIniFilename("imgui.ini");
         final ImFontAtlas fontAtlas = io.getFonts();
@@ -37,6 +37,41 @@ public class ImGuiLayer {
         fontAtlas.build();
 
         io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
+        io.addConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
+        io.setBackendPlatformName("imgui_java_impl_glfw");
+
+        glfwSetKeyCallback(glfwWindow, (w, key, scancode, action, mods) -> {
+            if (action == GLFW_PRESS) {
+                io.setKeysDown(key, true);
+            } else if (action == GLFW_RELEASE) {
+                io.setKeysDown(key, false);
+            }
+
+            io.setKeyCtrl(io.getKeysDown(GLFW_KEY_LEFT_CONTROL) || io.getKeysDown(GLFW_KEY_RIGHT_CONTROL));
+            io.setKeyShift(io.getKeysDown(GLFW_KEY_LEFT_SHIFT) || io.getKeysDown(GLFW_KEY_RIGHT_SHIFT));
+            io.setKeyAlt(io.getKeysDown(GLFW_KEY_LEFT_ALT) || io.getKeysDown(GLFW_KEY_RIGHT_ALT));
+            io.setKeySuper(io.getKeysDown(GLFW_KEY_LEFT_SUPER) || io.getKeysDown(GLFW_KEY_RIGHT_SUPER));
+
+            if (!io.getWantCaptureKeyboard()) {
+                KeyListener.keyCallback(w, key, scancode, action, mods);
+            }
+        });
+
+        glfwSetMouseButtonCallback(glfwWindow, (w, button, action, mods) -> {
+            final boolean[] mouseDown = new boolean[5];
+
+            mouseDown[0] = button == GLFW_MOUSE_BUTTON_1 && action != GLFW_RELEASE;
+            mouseDown[1] = button == GLFW_MOUSE_BUTTON_2 && action != GLFW_RELEASE;
+            mouseDown[2] = button == GLFW_MOUSE_BUTTON_3 && action != GLFW_RELEASE;
+            mouseDown[3] = button == GLFW_MOUSE_BUTTON_4 && action != GLFW_RELEASE;
+            mouseDown[4] = button == GLFW_MOUSE_BUTTON_5 && action != GLFW_RELEASE;
+            io.setMouseDown(mouseDown);
+
+            if (!io.getWantCaptureMouse() && mouseDown[1]) {
+                ImGui.setWindowFocus(null);
+            }
+            MouseListener.mouseButtonCallback(w, button, action, mods);
+        });
 
         imGuiGlfw.init(glfwWindow, true);
         imGuiGl3.init("#version 330 core");

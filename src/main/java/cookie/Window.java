@@ -3,6 +3,7 @@ package cookie;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import renderer.DebugDraw;
+import renderer.Framebuffer;
 import scenes.LevelEditorScene;
 import scenes.LevelScene;
 import scenes.Scene;
@@ -18,6 +19,7 @@ public class Window {
     private String title;
     private long glfwWindow;
     private ImGuiLayer imguiLayer;
+    private Framebuffer framebuffer;
 
     private float r, g, b, a;
 
@@ -126,6 +128,8 @@ public class Window {
         this.imguiLayer = new ImGuiLayer();
         this.imguiLayer.initImGui(glfwWindow);
 
+        this.framebuffer = new Framebuffer(1920, 1080);
+
         Window.changeScene(0);
 
     }
@@ -144,10 +148,12 @@ public class Window {
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            this.framebuffer.bind();
             if (dt >= 0) {
                 DebugDraw.draw();
                 currentScene.update(dt);
             }
+            this.framebuffer.unbind();
 
             this.imguiLayer.update(dt, currentScene);
 

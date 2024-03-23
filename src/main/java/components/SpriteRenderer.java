@@ -1,6 +1,5 @@
 package components;
 
-import cookie.Component;
 import cookie.Transform;
 import imgui.ImGui;
 import org.joml.Vector2f;

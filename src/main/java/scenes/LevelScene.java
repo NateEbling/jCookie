@@ -1,8 +1,8 @@
-package cookie;
+package scenes;
 
-import java.awt.event.KeyEvent;
+import scenes.Scene;
 
-public class LevelScene extends Scene{
+public class LevelScene extends Scene {
 
 
     public LevelScene() {

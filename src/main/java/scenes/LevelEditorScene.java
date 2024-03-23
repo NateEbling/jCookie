@@ -61,7 +61,6 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float dt) {
         levelEditorComp.update(dt);
-        DebugDraw.addCircle(new Vector2f(100, 100), 64, new Vector3f(0, 1, 0), 1);
         MouseListener.getOrthoX();
 
         for (GameObject go: this.gameObjects) {

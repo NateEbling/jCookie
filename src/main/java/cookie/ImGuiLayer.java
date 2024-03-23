@@ -3,11 +3,11 @@ package cookie;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGuiIO;
-import imgui.flag.ImGuiConfigFlags;
-import imgui.flag.ImGuiFreeTypeBuilderFlags;
+import imgui.flag.*;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.internal.ImGui;
+import imgui.type.ImBoolean;
 import scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -24,8 +24,9 @@ public class ImGuiLayer {
 
         ImGuiIO io = ImGui.getIO();
         io.setIniFilename("imgui.ini");
-        io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
-        io.addConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
+        io.setConfigFlags(ImGuiConfigFlags.ViewportsEnable);
+        io.setConfigFlags(ImGuiConfigFlags.DockingEnable);
+        io.setConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
         io.setBackendPlatformName("imgui_java_impl_glfw");
 
         // Callbacks
@@ -53,10 +54,12 @@ public class ImGuiLayer {
         imGuiGlfw.newFrame();
         ImGui.newFrame();
 
-        currentScene.sceneImgui();
-
+        setupDockspace();
         ImGui.showDemoWindow();
 
+        currentScene.sceneImgui();
+
+        ImGui.end();
         ImGui.render();
         imGuiGl3.renderDrawData(ImGui.getDrawData());
 
@@ -118,5 +121,22 @@ public class ImGuiLayer {
     private void resizeCallback(long window, int width, int height) {
         Window.setWidth(width);
         Window.setHeight(height);
+    }
+
+    private void setupDockspace() {
+        int windowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking;
+
+        ImGui.setNextWindowPos(0.0f, 0.0f, ImGuiCond.Always);
+        ImGui.setNextWindowSize(Window.getWidth(), Window.getHeight());
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+        ImGui.pushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+        windowFlags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove
+                | ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+
+        ImGui.begin("Dockspace demo", new ImBoolean(true), windowFlags);
+        ImGui.popStyleVar(2);
+
+        // Dockspace
+        ImGui.dockSpace(ImGui.getID("Dockspace"));
     }
 }

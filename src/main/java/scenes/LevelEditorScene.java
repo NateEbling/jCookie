@@ -5,7 +5,9 @@ import cookie.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import org.joml.Vector4f;
+import renderer.DebugDraw;
 import scenes.Scene;
 import util.AssetPool;
 
@@ -41,6 +43,7 @@ public class LevelEditorScene extends Scene {
         obj1.addComponent(new Rigidbody());
         this.addGameObjectToScene(obj1);
         this.activeGameObject = obj1;
+
     }
 
     private void loadResources() {
@@ -52,6 +55,7 @@ public class LevelEditorScene extends Scene {
                         16, 16, 4, 0));
     }
 
+    float t = 0.0f;
     @Override
     public void update(float dt) {
         mouseControls.update(dt);

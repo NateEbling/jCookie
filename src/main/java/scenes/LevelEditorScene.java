@@ -35,7 +35,9 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
         if (levelLoaded) {
-            this.activeGameObject = gameObjects.get(0);
+            if (!gameObjects.isEmpty()) {
+                this.activeGameObject = gameObjects.get(0);
+            }
             return;
         }
 
@@ -56,6 +58,15 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("assets/spritesheets/tiles1.png",
                 new Spritesheet(AssetPool.getTexture("assets/spritesheets/tiles1.png"),
                         16, 16, 4, 0));
+
+        for (GameObject g : gameObjects) {
+            if (g.getComponent(SpriteRenderer.class) != null) {
+                SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
+                if (spr.getTexture() != null) {
+                    spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilepath()));
+                }
+            }
+        }
     }
 
     @Override

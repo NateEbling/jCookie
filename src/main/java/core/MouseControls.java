@@ -1,8 +1,7 @@
-package components;
+package core;
 
-import cookie.GameObject;
-import cookie.MouseListener;
-import cookie.Window;
+import components.Component;
+import listeners.MouseListener;
 import util.Settings;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOUSE_BUTTON_LEFT;

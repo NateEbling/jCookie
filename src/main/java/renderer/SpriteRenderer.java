@@ -1,10 +1,12 @@
-package components;
+package renderer;
 
-import cookie.Transform;
+import components.Component;
+import sprites.Sprite;
+import core.Transform;
 import imgui.ImGui;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
-import renderer.Texture;
+import sprites.Texture;
 
 public class SpriteRenderer extends Component {
 

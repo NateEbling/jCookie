@@ -1,7 +1,7 @@
 package renderer;
 
-import components.SpriteRenderer;
-import cookie.GameObject;
+import core.GameObject;
+import sprites.Texture;
 
 import java.util.ArrayList;
 import java.util.Collections;

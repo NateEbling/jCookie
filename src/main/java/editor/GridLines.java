@@ -1,6 +1,7 @@
-package components;
+package editor;
 
-import cookie.Window;
+import components.Component;
+import core.Window;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import renderer.DebugDraw;

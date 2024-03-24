@@ -1,6 +1,11 @@
-package cookie;
+package gui;
 
+import core.Window;
+import listeners.KeyListener;
+import listeners.MouseListener;
+import scenes.Scene;
 import editor.GameViewWIndow;
+
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGuiIO;
@@ -9,7 +14,6 @@ import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import imgui.internal.ImGui;
 import imgui.type.ImBoolean;
-import scenes.Scene;
 
 import static org.lwjgl.glfw.GLFW.*;
 

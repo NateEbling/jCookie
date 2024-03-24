@@ -1,4 +1,6 @@
-package components;
+package renderer;
+
+import components.Component;
 
 public class FontRenderer extends Component {
 

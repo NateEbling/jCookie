@@ -1,4 +1,4 @@
-package cookie;
+package core;
 
 import components.Component;
 

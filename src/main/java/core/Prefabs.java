@@ -1,7 +1,7 @@
-package cookie;
+package core;
 
-import components.Sprite;
-import components.SpriteRenderer;
+import sprites.Sprite;
+import renderer.SpriteRenderer;
 import org.joml.Vector2f;
 
 public class Prefabs {

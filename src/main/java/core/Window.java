@@ -1,5 +1,8 @@
-package cookie;
+package core;
 
+import gui.ImGuiLayer;
+import listeners.KeyListener;
+import listeners.MouseListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import renderer.DebugDraw;
@@ -30,7 +33,7 @@ public class Window {
     private Window() {
         this.width = 1920;
         this.height = 1080;
-        this.title = "My Game";
+        this.title = "Cookie";
         r = 1;
         g = 1;
         b = 1;

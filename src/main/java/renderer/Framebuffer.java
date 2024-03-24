@@ -1,5 +1,7 @@
 package renderer;
 
+import sprites.Texture;
+
 import static org.lwjgl.opengl.GL30.*;
 
 public class Framebuffer {

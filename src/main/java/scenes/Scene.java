@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.Component;
 import components.ComponentDeserializer;
-import cookie.Camera;
-import cookie.GameObject;
-import cookie.GameObjectDeserializer;
+import core.Camera;
+import core.GameObject;
+import core.GameObjectDeserializer;
 import imgui.ImGui;
 import renderer.Renderer;
 

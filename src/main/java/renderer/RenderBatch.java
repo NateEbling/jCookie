@@ -1,7 +1,7 @@
 package renderer;
 
-import components.SpriteRenderer;
-import cookie.Window;
+import core.Window;
+import sprites.Texture;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import util.AssetPool;

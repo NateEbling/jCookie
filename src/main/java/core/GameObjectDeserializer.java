@@ -1,4 +1,4 @@
-package cookie;
+package core;
 
 import com.google.gson.*;
 import components.Component;

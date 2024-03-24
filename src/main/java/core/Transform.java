@@ -1,4 +1,4 @@
-package cookie;
+package core;
 
 import org.joml.Vector2f;
 

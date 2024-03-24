@@ -1,8 +1,8 @@
 package util;
 
-import components.Spritesheet;
+import sprites.Spritesheet;
 import renderer.Shader;
-import renderer.Texture;
+import sprites.Texture;
 
 import java.io.File;
 import java.util.HashMap;

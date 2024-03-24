@@ -1,4 +1,4 @@
-package renderer;
+package sprites;
 
 import org.lwjgl.BufferUtils;
 

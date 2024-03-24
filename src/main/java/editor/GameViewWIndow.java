@@ -1,10 +1,9 @@
 package editor;
 
-import cookie.*;
+import core.*;
 import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
-import imgui.internal.ImGuiWindow;
 
 public class GameViewWIndow {
 

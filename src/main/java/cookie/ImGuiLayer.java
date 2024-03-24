@@ -1,5 +1,6 @@
 package cookie;
 
+import editor.GameViewWIndow;
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
 import imgui.ImGuiIO;
@@ -24,9 +25,9 @@ public class ImGuiLayer {
 
         ImGuiIO io = ImGui.getIO();
         io.setIniFilename("imgui.ini");
-        io.setConfigFlags(ImGuiConfigFlags.ViewportsEnable);
-        io.setConfigFlags(ImGuiConfigFlags.DockingEnable);
-        io.setConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
+        io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
+        io.setConfigFlags(ImGuiConfigFlags.DockingEnable); // this one needs to be "setConfigFlags"
+        io.addConfigFlags(ImGuiConfigFlags.NavEnableKeyboard);
         io.setBackendPlatformName("imgui_java_impl_glfw");
 
         // Callbacks
@@ -56,6 +57,7 @@ public class ImGuiLayer {
 
         setupDockspace();
         ImGui.showDemoWindow();
+        GameViewWIndow.imgui();
 
         currentScene.sceneImgui();
 

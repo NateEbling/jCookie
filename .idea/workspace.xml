@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c28cf1b7-9d9b-4596-93be-c50a3a5a17a3" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/EditorCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game-design.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/editor/GameViewWIndow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/GameViewWIndow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/PickingTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/PickingTexture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/editor/GridLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/GridLines.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ImGuiLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/listeners/MouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/listeners/MouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Framebuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Framebuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

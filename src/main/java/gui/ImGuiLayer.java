@@ -48,7 +48,11 @@ public class ImGuiLayer {
         glfwSetKeyCallback(glfwWindow, this::keyCallback);
         glfwSetCharCallback(glfwWindow, this::charCallback);
         glfwSetMouseButtonCallback(glfwWindow, this::mouseCallback);
-        glfwSetScrollCallback(glfwWindow, this::scrollCallback);
+        glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {
+            io.setMouseWheelH(io.getMouseWheelH() + (float)xOffset);
+            io.setMouseWheel(io.getMouseWheel() + (float)yOffset);
+            MouseListener.mouseScrollCallback(w, xOffset, yOffset);
+        });
         glfwSetWindowSizeCallback(glfwWindow, this::resizeCallback);
 
         // Font

@@ -1,5 +1,6 @@
 package scenes;
 
+import components.EditorCamera;
 import core.*;
 import editor.GridLines;
 import sprites.Sprite;
@@ -26,12 +27,13 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        this.camera = new Camera(new Vector2f(-250, 0));
+
         levelEditorComp.addComponent(new MouseControls());
         levelEditorComp.addComponent(new GridLines());
+        levelEditorComp.addComponent(new EditorCamera(this.camera));
 
         loadResources();
-
-        this.camera = new Camera(new Vector2f(-250, 0));
 
         sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
@@ -66,6 +68,7 @@ public class LevelEditorScene extends Scene {
     @Override
     public void update(float dt) {
         levelEditorComp.update(dt);
+        this.camera.adjustProjection();
         MouseListener.getOrthoX();
 
         for (GameObject go: this.gameObjects) {

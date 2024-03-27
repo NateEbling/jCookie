@@ -35,13 +35,6 @@ public class LevelEditorScene extends Scene {
 
         sprites = AssetPool.getSpritesheet("assets/spritesheets/tiles1.png");
 
-        if (levelLoaded) {
-            if (!gameObjects.isEmpty()) {
-                this.activeGameObject = gameObjects.get(0);
-            }
-            return;
-        }
-
 //        obj1 = new GameObject("object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)), 1);
 //        obj1Sprite = new SpriteRenderer();
 //        obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));

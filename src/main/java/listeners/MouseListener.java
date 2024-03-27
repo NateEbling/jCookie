@@ -80,14 +80,14 @@ public class MouseListener {
 
     public static float getScreenX() {
         float currentX = getX() - gameViewportPos.x;
-        currentX = (currentX / gameViewportSize.x) * 1920;
+        currentX = (currentX / gameViewportSize.x) * 1920.0f;
 
         return currentX;
     }
 
     public static float getScreenY() {
         float currentY = getY() - gameViewportPos.y;
-        currentY = -((currentY / gameViewportSize.y) * 1080.0f);
+        currentY = 1080.0f - ((currentY / gameViewportSize.y) * 1080.0f);
 
         return currentY;
     }

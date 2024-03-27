@@ -1,10 +1,12 @@
 package gui;
 
 import core.Window;
+import editor.PickingTexture;
+import editor.PropertiesWindow;
 import listeners.KeyListener;
 import listeners.MouseListener;
 import scenes.Scene;
-import editor.GameViewWIndow;
+import editor.GameViewWindow;
 
 import imgui.ImFontAtlas;
 import imgui.ImFontConfig;
@@ -18,8 +20,16 @@ import imgui.type.ImBoolean;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class ImGuiLayer {
+
     public ImGuiImplGlfw imGuiGlfw;
     public ImGuiImplGl3 imGuiGl3;
+    private GameViewWindow gameViewWindow;
+    private PropertiesWindow propertiesWindow;
+
+    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
+        this.gameViewWindow = new GameViewWindow();
+        this.propertiesWindow = new PropertiesWindow(pickingTexture);
+    }
 
     public void initImGui(long glfwWindow) {
         imGuiGlfw = new ImGuiImplGlfw();
@@ -60,10 +70,15 @@ public class ImGuiLayer {
         ImGui.newFrame();
 
         setupDockspace();
-        ImGui.showDemoWindow();
-        GameViewWIndow.imgui();
 
-        currentScene.sceneImgui();
+        ImGui.showDemoWindow();
+
+        currentScene.imgui();
+
+        gameViewWindow.imgui();
+
+        propertiesWindow.update(dt, currentScene);
+        propertiesWindow.imgui();
 
         ImGui.end();
         ImGui.render();
@@ -92,7 +107,11 @@ public class ImGuiLayer {
         if (!io.getWantCaptureMouse() && mouseDown[1]) {
             ImGui.setWindowFocus(null);
         }
-        MouseListener.mouseButtonCallback(window, button, action, mods);
+
+        if (gameViewWindow.getWantCaptureMouse()) {
+            MouseListener.mouseButtonCallback(window, button, action, mods);
+        }
+
     }
 
     private void keyCallback(long window, int key, int scancode, int action, int mods) {
